@@ -7,7 +7,7 @@ Logo detection in real-world scene images is an important problem with applicati
 
 ## Architecture
 
-![Architecture](Architecture.pdf)
+![Architecture](Architecture.jpg)
 
 ## Citation
 
