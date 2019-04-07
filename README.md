@@ -11,7 +11,7 @@ Logo detection in real-world scene images is an important problem with applicati
 
 ## Qualitative Results
 
-![Qualitative Results](results.png)
+![Qualitative Results](result.png)
 
 
 ## Citation
