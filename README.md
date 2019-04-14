@@ -9,7 +9,7 @@ Logo detection in real-world scene images is an important problem with applicati
 
 ![Architecture](Architecture.jpg)
 
-![Architecture](Logo_Tensorboard_Architechture.png =250x250)
+![Architecture](Logo_Tensorboard_Architechture2.png)
 
 ## Qualitative Results
 
