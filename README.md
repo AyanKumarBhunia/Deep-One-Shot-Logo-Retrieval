@@ -18,7 +18,7 @@ Logo detection in real-world scene images is an important problem with applicati
 
 ## Citation
 
-If you find this article useful in your research, please consider citing:
+If you find this article useful in your research, please consider citing: 
 ```
 @article{bhunia2018query,
   title={A Deep One-Shot Network for Query-based Logo Retrieval},
