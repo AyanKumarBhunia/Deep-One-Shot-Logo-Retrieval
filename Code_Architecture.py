@@ -290,8 +290,7 @@ def Network (Input1,Input2): #input1 : [Batch_size, 256, 256, 3], input2 : [Batc
         
         
         output=tf.layers.conv2d(upsam5, filters=1, kernel_size=3, 
-                                           strides=1,  padding='SAME',
-                                           activation=tf.nn.relu, name='fconv_5')  #[32, 256, 256, 1]
+                                           strides=1,  padding='SAME', name='fconv_5')  #[32, 256, 256, 1]
         
         
     
