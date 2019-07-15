@@ -19,10 +19,15 @@ Logo detection in real-world scene images is an important problem with applicati
 
 If you find this article useful in your research, please consider citing: 
 ```
-@article{bhunia2018query,
-  title={A Deep One-Shot Network for Query-based Logo Retrieval},
-  author={Bhunia, Ayan Kumar and Bhunia, Ankan Kumar and Ghose, Shuvozit and Das, Abhirup and Roy, Partha Pratim},
-  journal={Pattern Recognition Journal, Elsevier},
-  year={2019}
+@article{BHUNIA2019106965,
+title = "A deep one-shot network for query-based logo retrieval",
+journal = "Pattern Recognition",
+volume = "96",
+pages = "106965",
+year = "2019",
+issn = "0031-3203",
+doi = "https://doi.org/10.1016/j.patcog.2019.106965",
+url = "http://www.sciencedirect.com/science/article/pii/S0031320319302626",
+author = "Ayan Kumar Bhunia and Ankan Kumar Bhunia and Shuvozit Ghose and Abhirup Das and Partha Pratim Roy and Umapada Pal",
 }
 ```
