@@ -1,19 +1,22 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior() 
 import matplotlib.pyplot as plt
 import cv2
 import numpy as np
 import os
 from matplotlib import pyplot as plt
 import time
+import argparse 
+from skimage.io import imread
+from skimage.transform import resize
 
-global batch_size  ########################################
-batch_size = 32
+global batch_size
+batch_size = 1
 
 def deconv2d(input_, output_shape,
              k_h=3, k_w=3, d_h=2, d_w=2, stddev=0.02,
              name='deconv2d', init_bias=0.):
   """Creates deconvolutional layers.
-
   Args:
     input_: 4D input tensor (batch size, height, width, channel).
     output_shape: Number of features in the output layer.
@@ -303,12 +306,37 @@ def Network (Input1,Input2): #input1 : [Batch_size, 256, 256, 3], input2 : [Batc
 tf.reset_default_graph()
 
 
+if __name__ == '__main__':
 
-Input1=tf.placeholder(dtype = tf.float32, shape = [batch_size, 256, 256, 3], name = 'Target')
-Input2=tf.placeholder(dtype = tf.float32, shape = [batch_size, 64, 64, 3], name = 'Query')
+  parser = argparse.ArgumentParser(description='Airborne LiDAR Sensor Forestry Processing Algorithm')
+  parser.add_argument('input_img', type=str, help="Input dir for images files")
+  parser.add_argument('input_query', type=str, help="Input dir for query files")
 
+  args = parser.parse_args()
 
-Output = Network(Input1,Input2)
+  # File paths
+  input_img = args.input_img
+  input_query = args.input_query
 
+  print(f'input_img: {input_img}')
+  print(f'input_query: {input_query}')
 
+  imgs = [resize(imread(os.path.join(input_img, f)), (256, 256, 3)) for f in os.listdir(input_img)]
+  queries = [resize(imread(os.path.join(input_query, f)), (64, 64, 3)) for f in os.listdir(input_query)]
 
+  input1 = np.concatenate(imgs, axis=0).astype(np.float32)
+  input2 = np.concatenate(queries, axis=0).astype(np.float32)
+
+  input1 = tf.convert_to_tensor(input1, dtype=tf.float32)
+  input2 = tf.convert_to_tensor(input2, dtype=tf.float32)
+  
+  Input1=tf.placeholder(dtype = tf.float32, shape = [batch_size, 256, 256, 3], name = 'Target')
+  Input2=tf.placeholder(dtype = tf.float32, shape = [batch_size, 64, 64, 3], name = 'Query')
+
+  with tf.Session() as sess:
+    #Output = Network.eval(feed_dict={Input1: input1, Input2: input2}, session=sess)
+    Output = Network(Input1,Input2)
+    Output_ = np.array(Output)
+    plt.imshow(Output_)
+    plt.show()
+    
